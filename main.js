@@ -5,6 +5,8 @@
  * - https://ahnheejong.name/articles/my-first-octahedron/
  */
 
+'use strict';
+
 const width = window.innerWidth;
 const height = window.innerHeight;
 
@@ -16,15 +18,15 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene;
 
 // 물체
-const torusGeometry = new THREE.TorusGeometry(100, 30, 160, 1000);
-const torusMaterial = new THREE.MeshBasicMaterial({color: 0x1ec876});
+const torusGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const torusMaterial = new THREE.MeshLambertMaterial({color: 0x1ec876, wireframe: true});
 const torus = new THREE.Mesh(torusGeometry, torusMaterial);
 scene.add(torus);
 
 // 카메라
-const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000);
-camera.position.y = 160;
-camera.position.z = 400;
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.y = 16;
+camera.position.z = 40;
 camera.lookAt(torus.position);
 scene.add(camera);
 
@@ -36,13 +38,14 @@ scene.add(skybox);
 
 // 조명
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(0, 300, 200);
+pointLight.position.set(0, 100, 100);
 scene.add(pointLight);
 
 // 회전
-const clock = new THREE.Clock;
+const speed = 0.003;
 (function update() {
     renderer.render(scene, camera);
-    torus.rotation.y -= clock.getDelta();
-    requestAnimationFrame(update)
+    torus.rotation.x -= speed;
+    torus.rotation.z -= speed;
+    requestAnimationFrame(update);
 }()); // function call with declaration
