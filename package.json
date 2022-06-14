@@ -1,0 +1,23 @@
+{
+  "name": "threejs-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JinseongHwang/threejs-tutorial.git"
+  },
+  "author": "JinseongHwang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JinseongHwang/threejs-tutorial/issues"
+  },
+  "homepage": "https://github.com/JinseongHwang/threejs-tutorial#readme",
+  "dependencies": {
+    "three": "^0.141.0"
+  }
+}
